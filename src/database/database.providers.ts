@@ -3,7 +3,13 @@ import * as mongoose from 'mongoose';
 export const databaseProviders = [
   {
     provide: 'USERS_DATABASE',
-    useFactory: async (): Promise<typeof mongoose> =>
-      await mongoose.connect('mongodb://localhost/users'),
+    useFactory: async () =>
+      mongoose.createConnection('mongodb://localhost/users'),
+  },
+  {
+    provide: 'BLOG_DATABASE',
+    useFactory: async () =>
+      mongoose.createConnection('mongodb://localhost/blog'),
   },
 ];
+
