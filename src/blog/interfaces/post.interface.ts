@@ -3,5 +3,6 @@ export interface Post {
     title: string,
 
     post_content: string,
-    date_of_creation: number
+    date_of_creation: number,
+    uuid: string
 }

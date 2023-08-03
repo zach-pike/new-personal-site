@@ -14,9 +14,9 @@ export class BlogController {
     @Post('/createPost')
     @UseGuards(AuthGuard)
     async createPost(@Body() body: PostCreateDTO, @Request() req: ExpressReq & {user:JwtObject}) {
-        await this.blogService.addPost(req.user.uuid, body.title, body.content);
+        let id = await this.blogService.addPost(req.user.uuid, body.title, body.content);
 
-        return "OK";
+        return id;
     }
 
     @Get('/fetchPosts')
