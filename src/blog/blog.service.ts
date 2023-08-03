@@ -17,6 +17,16 @@ export class BlogService {
     }
 
     async fetchPosts(): Promise<Post[]> {
-        return await this.postModel.find({}).exec();
+        return (await this.postModel.find({}).exec())
+            .map(v => {
+                return {
+                    poster: v.poster,
+                    title: v.title,
+                    post_content: v.post_content,
+                    date_of_creation: v.date_of_creation
+                }
+            });
+
+            
     }
 }
