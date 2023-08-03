@@ -1,11 +1,24 @@
 <script lang="ts">
     import NavBar from "./lib/NavBar.svelte";
-
+    import { Router, Route } from 'svelte-routing';
+    import NavBarLink from "./lib/NavBarLink.svelte";
+    import NavBarSpacer from "./lib/NavBarSpacer.svelte";
+    import Home from "./pages/Home.svelte";
 </script>
 
 <main>
-    <NavBar />
-    <div class="w-full pt-2 px-2">
-        <p class="text-2xl">Test Page</p>
-    </div>
+    <NavBar>
+        <NavBarLink name="Home" path="/" />
+        <NavBarLink name="Contact" path="/contact" />
+        <NavBarSpacer />
+        <NavBarLink name="Admin" path="/admin" />
+    </NavBar>
+
+    <Router>
+        <Route path='/'>
+            <Home />
+        </Route>
+        <Route path='/contact'></Route>
+        <Route path='/admin'></Route>
+    </Router>
 </main>
