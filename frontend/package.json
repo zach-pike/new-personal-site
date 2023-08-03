@@ -22,6 +22,7 @@
     "vite": "^4.4.5"
   },
   "dependencies": {
+    "svelte-markdown": "^0.3.0",
     "svelte-routing": "^2.0.0"
   }
 }
