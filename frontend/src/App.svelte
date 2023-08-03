@@ -4,6 +4,7 @@
     import NavBarLink from "./lib/NavBarLink.svelte";
     import NavBarSpacer from "./lib/NavBarSpacer.svelte";
     import Home from "./pages/Home.svelte";
+    import Admin from "./pages/Admin.svelte";
 </script>
 
 <main>
@@ -19,6 +20,8 @@
             <Home />
         </Route>
         <Route path='/contact'></Route>
-        <Route path='/admin'></Route>
+        <Route path='/admin'>
+            <Admin />
+        </Route>
     </Router>
 </main>
