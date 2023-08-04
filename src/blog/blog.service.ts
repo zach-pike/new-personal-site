@@ -30,7 +30,7 @@ export class BlogService {
                 date_of_creation: v.date_of_creation,
                 uuid: v.uuid
             }
-        }).sort((a, b) => a.date_of_creation - b.date_of_creation);
+        });
 
         return posts;
     }

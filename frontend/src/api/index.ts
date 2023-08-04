@@ -46,8 +46,9 @@ namespace API {
     export async function fetchBlog(): Promise<any[]> {
         let req = await fetch(`${apiBaseURL}/blog/fetchPosts`);
         if (!req.ok) throw Error(await req.text());
-
-        return await req.json();
+        
+        let a: { date_of_creation: number }[] = await req.json();
+        return a.sort((a, b) =>  (a.date_of_creation - b.date_of_creation)).reverse();
     }
 }
 
