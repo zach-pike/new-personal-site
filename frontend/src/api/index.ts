@@ -1,10 +1,21 @@
-import { writable } from "svelte/store";
+import { readable, writable } from "svelte/store";
+import jwt_decode from 'jwt-decode';
 
 export const apiBaseURL = 'https://backend.zpike.net';
 export let accessToken = writable<string>(null);
 
-namespace API {
+export let jwtData = readable(null, (set) => {
+    let s = accessToken.subscribe((a) => {
+        if (a != null)
+            set(jwt_decode(a));
+    });
 
+    return () => {
+        s();
+    }
+})
+
+namespace API {
     export async function login(username: string, password: string) {
         let req = await fetch(`${apiBaseURL}/auth/login`, {
             method: "POST",
