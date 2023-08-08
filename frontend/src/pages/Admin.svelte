@@ -1,11 +1,27 @@
 <script lang="ts">
-    import { API, accessToken } from '../api';
+    import { accessToken, jwtData } from '../api';
     import Login from "./Login.svelte";
+    import CreateBlogPost from './admin_modules/CreateBlogPost.svelte';
+
+    let modules = [CreateBlogPost];
 </script>
 
-{#if $accessToken == null}
-<Login />
+<!-- svelte-ignore missing-declaration -->
+{#if $accessToken != null && $jwtData != null && $jwtData.admin}
+
+<div class="m-2">
+    <!-- Admin page here -->
+    <p class="text-4xl">Welcome <span class="font-bold">{$jwtData.username}</span>!</p>
+
+    <div class="h-[2px] w-full bg-black my-1"></div>
+
+    <div class="flex">
+        {#each modules as mod}
+        <svelte:component this={mod} />
+        {/each}
+    </div>
+</div>
+
 {:else}
-<!-- Admin page here -->
-<p>logged in</p>
+<Login />
 {/if}

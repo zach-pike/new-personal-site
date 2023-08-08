@@ -13,7 +13,7 @@
 
 <div class="bg-white rounded-xl p-3 mb-2">
     <div class="p-1">
-        <p class="text-4xl font-bold">{title}</p>
+        <p class="text-xl font-bold md:text-2xl lg:text-4xl">{title}</p>
         <p class="text-sm italic">By: {poster} at {date}</p>
     </div>
 
